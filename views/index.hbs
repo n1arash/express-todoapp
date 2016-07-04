@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row ">
+        <h1 class="text-center">{{title}}</h1>
+        <div class="form-group" style="padding-top: 20px">
+            <form action="/task" method="post" enctype="application/x-www-form-urlencoded">
+                <div class="form-group col-md-6 text-center">
+                    <input class="form-control" type="text" name="task" placeholder="Task Text" autofocus required>
+                    <button type="submit" class="btn btn-warning btn-block"><i class="fa fa-edit"></i>Add It!</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            {{#if text}}
+            <table class="table table-striped custab">
+                <thead>
+                <tr>
+                    <th>Task</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+
+                {{#each text}}
+                    <tr>
+                        <td>{{this.task}}</td>
+                        <td class="text-center">
+                            <a href="/task/delete/{{this.id}}" class="btn btn-danger btn-md"><span class="fa fa-trash"></span>Del</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            {{else}}
+                <h1>There Is No Task To Show !</h1>
+            {{/if}}
+        </table>
+        </div>
+    </div>
+</div>
